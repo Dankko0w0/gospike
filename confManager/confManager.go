@@ -10,8 +10,9 @@ import (
 )
 
 var (
-	once sync.Once
-	v    *viper.Viper
+	once            sync.Once
+	v               *viper.Viper
+	ConfInitialized bool = false
 )
 
 // InitConfig 初始化配置管理器
@@ -38,12 +39,11 @@ func InitConfig(configPath string, configName string, configType string) error {
 		if err = v.ReadInConfig(); err != nil {
 			if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 				err = fmt.Errorf("no config file found: %w", err)
-				return
 			} else {
 				err = fmt.Errorf("error reading config file: %w", err)
-				return
 			}
 		}
+		ConfInitialized = true
 
 		// 监听配置文件变化
 		v.WatchConfig()
