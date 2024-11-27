@@ -23,16 +23,18 @@ func InitializeLogger(logToConsole bool, logToFile bool, logFilePath string, max
 		if logToConsole {
 			consoleWriter := zerolog.ConsoleWriter{Out: os.Stdout}
 
-			// 如果提供了自定义格式，则应用它
-			if consoleFormat != nil {
-				consoleWriter.TimeFormat = consoleFormat.TimeFormat
-				consoleWriter.NoColor = consoleFormat.NoColor
-				if len(consoleFormat.PartsOrder) > 0 {
-					consoleWriter.PartsOrder = consoleFormat.PartsOrder
-				}
-				if len(consoleFormat.PartsExclude) > 0 {
-					consoleWriter.PartsExclude = consoleFormat.PartsExclude
-				}
+			// 自定义控制台打印格式
+			if consoleFormat == nil {
+				defaultConsoleFormat := models.DefaultConsoleFormat()
+				consoleFormat = &defaultConsoleFormat
+			}
+			consoleWriter.TimeFormat = consoleFormat.TimeFormat
+			consoleWriter.NoColor = consoleFormat.NoColor
+			if len(consoleFormat.PartsOrder) > 0 {
+				consoleWriter.PartsOrder = consoleFormat.PartsOrder
+			}
+			if len(consoleFormat.PartsExclude) > 0 {
+				consoleWriter.PartsExclude = consoleFormat.PartsExclude
 			}
 
 			writers = append(writers, consoleWriter)
