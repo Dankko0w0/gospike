@@ -5,6 +5,7 @@ go 1.23.3
 require (
 	github.com/fsnotify/fsnotify v1.8.0
 	github.com/go-redis/redis/v8 v8.11.5
+	github.com/hirochachacha/go-smb2 v1.1.0
 	github.com/jackc/pgx/v4 v4.18.3
 	github.com/microsoft/go-mssqldb v1.7.2
 	github.com/rs/zerolog v1.33.0
@@ -20,6 +21,7 @@ require (
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
+	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
