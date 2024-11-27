@@ -16,7 +16,7 @@ var (
 )
 
 // InitializeLogger initializes the logger with specified settings
-func InitializeLogger(logToConsole bool, logToFile bool, logFilePath string, maxFileSize int, maxBackups int, maxAge int, consoleFormat *models.ConsoleFormat) {
+func InitializeLogger(logToConsole bool, logToFile bool, logFilePath string, maxFileSize int, maxBackups int, maxAge int, compress bool, consoleFormat *models.ConsoleFormat) {
 	once.Do(func() {
 		var writers []io.Writer
 
@@ -44,6 +44,7 @@ func InitializeLogger(logToConsole bool, logToFile bool, logFilePath string, max
 				MaxSize:    maxFileSize, // megabytes
 				MaxBackups: maxBackups,
 				MaxAge:     maxAge, // days
+				Compress:   compress,
 			})
 		}
 
