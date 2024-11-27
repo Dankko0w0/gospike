@@ -26,7 +26,7 @@ type ConsoleFormat struct {
 // DefaultConsoleFormat 返回默认的控制台格式配置
 func DefaultConsoleFormat() ConsoleFormat {
 	return ConsoleFormat{
-		TimeFormat: time.RFC3339,
+		TimeFormat: time.DateTime,
 		NoColor:    false,
 		PartsOrder: []string{
 			zerolog.TimestampFieldName,
